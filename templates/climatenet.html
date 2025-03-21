@@ -3,32 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Страница с фоновым изображением</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
+     <style>
+        body
+        {
+            font-family: 'Arial', sans-serif;
+            background-color: #9dcfe2;
+        }
+
+        div.maindiv
+        {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: url('https://instagram.fevn9-1.fna.fbcdn.net/v/t39.30808-6/470588666_1122735243195684_7917464809763196991_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4yMDQ4eDEzNjYuc2RyLmYzMDgwOC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fevn9-1.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2AGcrUF9WWqtLTANgsMK1zwpcNWEBXMsIF3r0dPYPhcwnSl4teTNcDCKrOXlcjET2Vk&_nc_ohc=BuKFUyYq8mYQ7kNvgEuvdTZ&_nc_gid=599c553d1f684b3486bbcbb6d6bff332&edm=APoiHPcAAAAA&ccb=7-5&ig_cache_key=MzUzODkyNTU3NzIwOTgzNDkyNQ%3D%3D.3-ccb7-5&oh=00_AYFTIiIDJVc-nPE2L9e7ZxuXN9pMKpmjproU8-Gl8E0Qrg&oe=67D65829&_nc_sid=22de04') no-repeat center center/cover;
-            color: white;
-            font-family: Arial, sans-serif;
+        }
+        
+        select#time_interval
+        {
+            font-size: 1.2rem;
             text-align: center;
+            margin-bottom: 20px;
         }
-        .content {
-            background: rgba(5, 5, 5, 5);
-            padding: 20px;
-            border-radius: 10px;
+
+        h1#head
+        {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
         }
-    </style>
+        
+        form
+        {
+            text-align: center;
+            width: 300px;
+        }
+
+        label
+        {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input[type="text"]
+        {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        input[type="submit"]
+        {
+            background-color: #3498db;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        input[type="submit"]:hover
+        {
+            background-color: rgb(4, 82, 135);
+        }
+        
+        div.datadiv
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;   
+        }
+
+        h3
+        {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+        p
+        {
+            justify-content: center;
+            align-self: center;
+            background-color: #ecf0f1;
+            width: 500px;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+     </style>
+    <title>Weather Data</title>
 </head>
 <body>
-    <div class="content">
-        <h1>Բարի գալուստ Climatenet!</h1>
-        <p>Եթե դու կարդում ես էս ուրեմն ես հավես չեմ արել նորմալ էջ սարքեմ ։).</p>
+    <div class="maindiv">
+        <h1 id="head">Enter a timestamp to receive the data.</h1>
+        <form action="/climatenet" method="POST">
+            <label for="time_interval">Choose a location:</label>
+            <select id="time_interval" name="location" required>
+                <optgroup label="Yerevan">
+                    <option value="14">Yerevan TUMO</option>
+                    <option value="8">Yerevan V. Sargsyan</option>
+                </optgroup>
+                <optgroup label="Shirak">
+                    <option value="1">Shirak Maralik</option>
+                    <option value="2">Shirak Panik</option>
+                    <option value="3">Shirak Azatan</option>
+                    <option value="4">Shirak Artik</option>
+                    <option value="5">Shirak Ashotsk</option>
+                    <option value="7">Shirak Akhuryan</option>
+                    <option value="11">Shirak Amasia</option>
+                    <option value="12">Shirak Yerazgavors</option>
+                    <option value="31">Shirak Gyumri</option>
+                </optgroup>
+                <optgroup label="Gegharkunik">
+                    <option value="6">Gegharkunik Gavar</option>
+                    <option value="9">Gegharkunik Sevan</option>
+                    <option value="17">Gegharkunik Chambarak</option>
+                </optgroup>
+                <optgroup label="Tavush">
+                    <option value="15">Tavush Ijevan</option>
+                    <option value="13">Tavush Artsvaberd</option>
+                    <option value="16">Tavush Berd</option>
+                    <option value="33">Tavush Dilijan</option>
+                    <option value="30">Tavush Koghb</option>
+                    <option value="18">Tavush Azatamut</option>
+                </optgroup>
+                <optgroup label="Lori">
+                    <option value="19">Lori Spitak</option>
+                    <option value="20">Lori Stepanavan</option>
+                    <option value="29">Lori Shnogh</option>
+                    <option value="25">Lori Alaverdi</option>
+                    <option value="27">Lori Odzun</option>
+                    <option value="28">Lori Dsegh</option>
+                </optgroup>
+                <optgroup label="Vayots Dzor">
+                    <option value="22">VayotsDzor Areni</option>
+                    <option value="23">VayotsDzor Jermuk</option>
+                    <option value="21">VayotsDzor Vayk</option>
+                </optgroup>
+            </select>
+            <label for="start_time">Enter the time interval:</label>
+            <input type="text" id="start_time" name="start_time" placeholder="2025-03-16 00:00:00" required>
+            <input type="submit" value="Get the data">
+        </form>
+    </div>
+    <div class="datadiv">
+        {% if data is not string %}
+            {% for i in range(data|length) %}
+                <p>{{ info[i] }} - {{ data[i] }}</p>
+            {% endfor %}
+        {% elif data is string %}
+            <p>{{ data }}</p>
+        {% endif %}
+
     </div>
 </body>
 </html>
-
