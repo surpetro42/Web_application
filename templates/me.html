@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>About Me</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: center;
+        }
+
+        .top-buttons {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(146, 130, 130, 0.9);
+            padding: 30px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .top-buttons button {
+            margin: 0 15px;
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #242424;
+            border: none;
+            border-radius: 25px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .top-buttons button:hover {
+            background-color: #000;
+            color: white;
+        }
+
+        .about-container {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 700px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .about-container h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #00ffe5;
+        }
+
+        .about-container p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #f0f0f0;
+        }
+
+        .social-links {
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            color: #00ffe5;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-buttons">
+        <button onclick="location.href='/'" class="button">Home</button>
+        <button onclick="location.href='/climatenet'" class="button">Climate</button>
+        <button onclick="location.href='/work'"> Three months of work</button>
+        <button onclick="location.href='/me'">About Me</button>
+    </div>
+    <div class="about-container">
+        <h1>About Me</h1>
+        <p>
+            Hi! I'm a tech enthusiast who loves working with Raspberry Pi, web development, and smart projects.
+            I enjoy building cool things with code and learning new technologies every day.
+            Whether it's backend or frontend, Linux or Python — I’m always curious to dive deeper.
+        </p>
+        <div class="social-links">
+            {% if github is not none %}
+                {% if github is string %}
+                  <a href="{{ github }}" target="_blank">GitHub</a>
+                {% endif %}
+            {% endif %}
+            {% if linkedin is not none %}
+                {% if linkedin is string %}
+                <a href="{{ linkedin }}" target="_blank">LinkedIn</a>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>

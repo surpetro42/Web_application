@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Raspberry Pi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #dfb9b9;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            animation: bodyFade 1s ease-in-out;
+        }
+
+        .top-buttons {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(45, 45, 45, 0.9);
+            padding: 30px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .top-buttons button {
+            margin: 0 15px;
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #242424;
+            border: none;
+            border-radius: 25px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .top-buttons button:hover {
+            background-color: #000;
+            color: white;
+        }
+
+        .worklink {
+            margin-top: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .worklink a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #ffffff;
+            color: #242424;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .worklink a:hover {
+            background-color: #000000;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-buttons">
+        <button onclick="location.href='/'" class="button">Home</button>
+        <button onclick="location.href='/climatenet'" class="button">Climate</button>
+        <button onclick="location.href='/work'"> Three months of work</button>
+        <button onclick="location.href='/me'">About Me</button>
+    </div>
+
+    <div class="worklink">
+        <a href="/work?path=raspberry">Raspberry</a>
+        <a href="/work?path=Communication">Wired Communication</a>
+        <a href="/work?path=BashVim">Bash Commands</a>
+    </div>
+
+</body>
+
+</html>

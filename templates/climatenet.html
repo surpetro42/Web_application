@@ -3,105 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <style>
-        body
-        {
-            font-family: 'Arial', sans-serif;
-            background-color: #9dcfe2;
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("https://images-in-website.s3.us-east-1.amazonaws.com/Banner/tumo_koghb.webp");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            height: 100vh;
+            animation: bodyFade 1s ease-in-out; 
         }
 
-        div.maindiv
-        {
+        .top-buttons {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(146, 130, 130, 0.9);
+            padding: 30px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .top-buttons button {
+            margin: 0 15px;
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #242424;
+            border: none;
+            border-radius: 25px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .top-buttons button:hover {
+            background-color: #000;
+            color: white;
+        }
+
+        .maindiv {
+            max-width: 800px;
+            margin: 150px auto;
+            padding: 50px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+    
+        #head {
+            text-align: center;
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+    
+        form {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            gap: 15px;
         }
-        
-        select#time_interval
-        {
-            font-size: 1.2rem;
-            text-align: center;
-            margin-bottom: 20px;
+    
+        label {
+            font-size: 16px;
+            color: #555;
         }
-
-        h1#head
-        {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 20px;
+    
+        select, input[type="text"] {
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: border 0.3s ease;
         }
-        
-        form
-        {
-            text-align: center;
-            width: 300px;
+    
+        select:focus, input[type="text"]:focus {
+            border-color: #3498db;
+            outline: none;
         }
-
-        label
-        {
-            font-size: 1rem;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        input[type="text"]
-        {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 2px solid #ccc;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-
-        input[type="submit"]
-        {
+    
+        input[type="submit"] {
             background-color: #3498db;
             color: white;
-            padding: 15px 30px;
+            padding: 12px 20px;
+            font-size: 16px;
             border: none;
-            border-radius: 15px;
-            font-size: 1rem;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.2s ease;
+            transition: background-color 0.3s ease;
         }
-
-        input[type="submit"]:hover
-        {
-            background-color: rgb(4, 82, 135);
+    
+        input[type="submit"]:hover {
+            background-color: #2980b9;
         }
-        
-        div.datadiv
-        {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;   
+    
+        .datadiv {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-sizing: border-box;
         }
-
-        h3
-        {
-            text-align: center;
-            font-size: 1.5rem;
-            margin-top: 20px;
+        .datadiv p {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 12px;
         }
-
-        p
-        {
-            justify-content: center;
-            align-self: center;
-            background-color: #ecf0f1;
-            width: 500px;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 10px;
-            font-size: 1rem;
-        }
-     </style>
+    </style>
+    
     <title>Weather Data</title>
 </head>
 <body>
+    <div class="top-buttons">
+        <button onclick="location.href='/'" class="button">Home</button>
+        <button onclick="location.href='/climatenet'" class="button">Climate</button>
+        <button onclick="location.href='/work'"> Three months of work</button>
+        <button onclick="location.href='/me'">About Me</button>
+    </div>
+
     <div class="maindiv">
         <h1 id="head">Enter a timestamp to receive the data.</h1>
         <form action="/climatenet" method="POST">
@@ -155,14 +177,17 @@
         </form>
     </div>
     <div class="datadiv">
-        {% if data is not string %}
-            {% for i in range(data|length) %}
-                <p>{{ info[i] }} - {{ data[i] }}</p>
-            {% endfor %}
-        {% elif data is string %}
-            <p>{{ data }}</p>
+        {% if data is not none %}
+            {% if data is not string %}
+                {% for i in range(data|length) %}
+                    <p>{{ info[i] }} - {{ data[i] }}</p>
+                {% endfor %}
+            {% elif data is string %}
+                <p>{{ data }}</p>
+            {% endif %}
+        {% else %}
+            <p>No data available</p>
         {% endif %}
-
     </div>
 </body>
 </html>

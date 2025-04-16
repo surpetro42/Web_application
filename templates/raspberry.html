@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Raspberry Pi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("https://eloutput.com/wp-content/uploads/2020/05/raspberry-pi-placa.jpg");
+            background-size: cover;
+            background-position: center 7%;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            animation: bodyFade 1s ease-in-out; 
+        }
+
+        .top-buttons {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(45, 45, 45, 0.9);
+            padding: 30px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .top-buttons button {
+            margin: 0 15px;
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #242424;
+            border: none;
+            border-radius: 25px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .top-buttons button:hover {
+            background-color: #000;
+            color: white;
+        }
+
+        .container {
+            background-color: rgb(129, 129, 129, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        h1 {
+            color: #ff5959;
+        }
+       
+        h2 {
+            color: #ffadad;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-buttons">
+        <button onclick="location.href='/'" class="button">Home</button>
+        <button onclick="location.href='/climatenet'" class="button">Climate</button>
+        <button onclick="location.href='/work'"> Three months of work</button>
+        <button onclick="location.href='/me'">About Me</button>
+    </div>
+    
+    <div class="container">
+        <h1>Ինչ է Raspberri Pi?</h1>
+        <img src="https://www.raspberrypi.org/assets/components/site/header/foundation-logo-b0f19781e462be54d3371c3da03431bb6dc407fca9f36820d27a7ff4e673406e.svg">
+        <p>
+            <strong>Raspberry Pi</strong> — Դա փոքր, բայց հզոր համակարգիչ է, որը մշակվել է Մեծ Բրիտանիայում Raspberry Pi
+            հիմնադրամի կողմից։
+            Այն օգտագործվում է վերապատրաստման, DIY նախագծերի, ավտոմատացման և նույնիսկ արդյունաբերության մեջ։
+            Raspberry Pi-ն մատչելի և բազմաֆունկցիոնալ սարք է, որը թույլ է տալիս սովորել ծրագրավորում, էլեկտրոնիկա և
+            համակարգչային ճարտարապետություն։
+            Այն ունի GPIO (General Purpose Input/Output) փիներ, որոնք թույլ են տալիս միացնել սենսորներ, շարժիչներ և այլ
+            արտաքին սարքեր՝ դարձնելով այն իդեալական ընտրություն ռոբոտաշինության և խելացի համակարգերի նախագծման համար։
+        </p>
+        <h2>Առավելություններ:</h2>
+        <ul>
+            <li>Էժան և կոմպակտ</li>
+            <li>Աջակցում է Linux համակարգ (օրինակ ՝ Raspberry Pi OS)</li>
+            <li>GPIO կապում սենսորների և մոդուլների միացման համար</li>
+            <li>Լավ տարբերակ է ծրագրավորում սովորելու համար</li>
+        </ul>
+        <h2>Օգտագործման օրինակներ:</h2>
+        <ul>
+            <li>DIY և հոբբի նախագծեր</li>
+            <li>Կրթություն</li>
+            <li>Արդյունաբերություն</li>
+            <li>Սերվերներ և ցանցեր</li>
+        </ul>
+        <p>Պաշտոնական կայք: <a href="https://www.raspberrypi.com/" target="_blank">raspberrypi.com</a></p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Raspberry Pi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2b2b2b;
+            margin: 0;
+            padding: 0;
+            color: white;
+            animation: bodyFade 1s ease-in-out;
+        }
+
+        .top-buttons {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(45, 45, 45, 0.9);
+            padding: 30px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .top-buttons button {
+            margin: 0 15px;
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #242424;
+            border: none;
+            border-radius: 25px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .top-buttons button:hover {
+            background-color: #000;
+            color: white;
+        }
+
+        .BashVim {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 120px;
+        }
+        
+        .container {
+            background-color: rgba(80, 80, 80, 0.9);
+            border-radius: 15px;
+            padding: 30px 40px;
+            width: 70%;
+            margin-bottom: 40px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0);
+        }
+
+        h2 {
+            color: #ffa07a;
+            font-size: 25px;
+        }
+
+        h3 {
+            color: #ffd1a4;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        h4 {
+            color: #fcd5ce;
+            font-size: 18px;
+            margin-top: 15px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 17px;
+            line-height: 1.5;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="top-buttons">
+        <button onclick="location.href='/'" class="button">Home</button>
+        <button onclick="location.href='/climatenet'" class="button">Climate</button>
+        <button onclick="location.href='/work'"> Three months of work</button>
+        <button onclick="location.href='/me'">About Me</button>
+    </div>
+    <div class="BashVim">
+        <div class="container">
+            <h2>Bash</h2>
+            <p>
+                Bash (կարճ՝ Bourne Again SHell) — դա shell է, այսինքն՝ հրամանային ինտերպրետատոր, որը թարգմանում է քո մուտքագրած հրամանները և փոխանցում օպերացիոն համակարգին։ Այն նաև ծրագրավորման լեզու է՝ աջակցելով փոփոխականներ, պայմաններ, ցիկլեր, ֆունկցիաներ և այլն։
+                🔹 Ստեղծվել է 1989-ին Բրայան Ֆոքսի կողմից GNU նախագծի շրջանակում՝ փոխարինելու ստանդարտ Bourne Shell-ին (sh)։
+            </p>
+        </div>
+        <div class="container">
+            <h2>Vim</h2>
+            <p>
+                Vim-ը (կրճատ՝ Vi IMproved) տեքստային խմբագիր է, որը ստեղծվել է որպես բարելավված տարբերակ Unix համակարգերում տարածված vi խմբագրից։
+                Vim-ը հատկապես հայտնի է իր արագությամբ, մինիմալիստական մոտեցմամբ և բացառիկ արդյունավետությամբ՝ հատկապես նրանց համար, ովքեր նախընտրում են աշխատել տերմինալում։
+                Ի տարբերություն սովորական խմբագիրների՝ Vim-ը աշխատում է մոդերի վրա հիմնված համակարգով, որտեղ օգտատերը տարբեր ռեժիմներով կարող է անցնել խմբագրման, նավարկման և հրամանների կատարման միջավայրերի միջև։
+                Սա սկզբում կարող է անսովոր թվալ, սակայն սովորելուց հետո այն տալիս է անգերազանցելի արագություն և հսկողություն տեքստի վրա։
+            </p>
+            <h3>Հիմնական մոդերը Vim-ում</h3>
+            <ul>
+                <li>Normal Mode – լռելյայն ռեժիմ՝ նավարկելու, ջնջելու կամ խմբագրելու հրամանների համար։</li>
+                <li>Insert Mode – տեքստ մուտքագրելու ռեժիմ։</li>
+                <li>Visual Mode – տեքստ ընտրելու ռեժիմ։</li>
+                <li>Command-line Mode – որոնման, պահման և այլ հրամանների կատարման ռեժիմ։</li>
+            </ul>
+            <h3>Օրինակներ</h3>
+            <ul>
+                <li>i – մուտքագրելու ռեժիմ (Insert)</li>
+                <li>Esc – վերադարձ Normal Mode</li>
+                <li>:w – պահպանել ֆայլը</li>
+                <li>:q – դուրս գալ</li>
+                <li>:wq – պահպանել և դուրս գալ</li>
+                <li>dd – ջնջել տող</li>
+                <li>yy – պատճենել տող</li>
+                <li>p – տեղադրել պատճենվածը</li>
+                <li>/բառ – որոնել բառը</li>
+                ...
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
