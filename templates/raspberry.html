@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <title>Raspberry Pi</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -13,47 +19,58 @@
             background-size: cover;
             background-position: center 7%;
             color: white;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            animation: bodyFade 1s ease-in-out; 
         }
 
-        .top-buttons {
-            position: fixed;
+        header {
+            background: #1f1f1f;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
             top: 0;
-            width: 100%;
-            background-color: rgba(45, 45, 45, 0.9);
-            padding: 30px;
-            text-align: center;
             z-index: 1000;
         }
-
-        .top-buttons button {
-            margin: 0 15px;
-            padding: 10px 20px;
-            background-color: #fff;
-            color: #242424;
-            border: none;
-            border-radius: 25px;
-            font-size: 20px;
-            cursor: pointer;
-            transition: 0.3s;
+        
+        h1 {
+            font-size: 3em;
+            animation: fadeIn 2s ease-in-out;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        header h1 {
+            color: #00c9ff;
         }
 
-        .top-buttons button:hover {
-            background-color: #000;
-            color: white;
+        nav .button {
+            margin-left: 20px;
+            font-size: 15px;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 15px 30px;
+            border-radius: 25px;
+            background: transparent;
+            border: 2px solid #ccc;
+            color: #ccc;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav .button:hover {
+            background: #00c9ff;
+            color: #000;
+            border-color: #00c9ff;
         }
 
         .container {
-            background-color: rgb(129, 129, 129, 0.9);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(129, 129, 129, 0.9);
             border-radius: 10px;
             padding: 20px;
-            max-width: 800px;
-            margin: auto;
+            width: 800px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -74,12 +91,16 @@
 </head>
 
 <body>
-    <div class="top-buttons">
-        <button onclick="location.href='/'" class="button">Home</button>
-        <button onclick="location.href='/climatenet'" class="button">Climate</button>
-        <button onclick="location.href='/work'"> Three months of work</button>
-        <button onclick="location.href='/me'">About Me</button>
-    </div>
+    <header>
+        <h1 onclick="location.href='/'" style="cursor: pointer;">Climatenet</h1>
+        <nav>
+            <button onclick="location.href='/'" class="button">Home</button>
+            <button onclick="location.href='/climatenet'" class="button">Climate</button>
+            <button onclick="location.href='/work'" class="button">Three months of work</button>
+            <button onclick="location.href='/me'" class="button">About Me</button>
+            <button onclick="location.href='/?path=useradd'" class="button">Sing In</button>
+        </nav>
+    </header>
     
     <div class="container">
         <h1>Ինչ է Raspberri Pi?</h1>

@@ -2,116 +2,184 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>About Me</title>
+    <meta charset="UTF-8" />
+    <title>About Me - Suren Petrosyan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #141e30, #243b55);
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #121212;
             color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            justify-content: center;
+            animation: bodyFade 1s ease-in-out;
         }
 
-        .top-buttons {
-            position: fixed;
+        header {
+            background: #1f1f1f;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
             top: 0;
-            width: 100%;
-            background-color: rgba(146, 130, 130, 0.9);
-            padding: 30px;
-            text-align: center;
             z-index: 1000;
         }
+        
+        h1 {
+            font-size: 3em;
+            animation: fadeIn 2s ease-in-out;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        header h1 {
+            color: #00c9ff;
+        }
 
-        .top-buttons button {
-            margin: 0 15px;
-            padding: 10px 20px;
-            background-color: #fff;
-            color: #242424;
-            border: none;
+        nav .button {
+            margin-left: 20px;
+            font-size: 15px;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 15px 30px;
             border-radius: 25px;
-            font-size: 20px;
+            background: transparent;
+            border: 2px solid #ccc;
+            color: #ccc;
+            transition: all 0.3s ease;
             cursor: pointer;
-            transition: 0.3s;
         }
 
-        .top-buttons button:hover {
-            background-color: #000;
-            color: white;
+        nav .button:hover {
+            background: #00c9ff;
+            color: #000;
+            border-color: #00c9ff;
         }
 
-        .about-container {
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 40px;
+        .CV {
+            max-width: 800px;
+            margin: 100px auto 40px;
+            background: rgba(255, 255, 255, 0.07);
             border-radius: 20px;
-            max-width: 700px;
-            text-align: center;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(10px);
         }
 
-        .about-container h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
+        .CV h1 {
+            font-size: 45px;
             color: #00ffe5;
+            margin-bottom: 5px;
         }
 
-        .about-container p {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #f0f0f0;
+        .CV h2 {
+            font-size: 25px;
+            font-weight: 400;
+            margin-bottom: 20px;
         }
 
-        .social-links {
-            margin-top: 25px;
+        h3 {
+            color: #00ffe5;
+            margin-top: 30px;
         }
 
         .social-links a {
-            margin: 0 10px;
+            display: inline-block;
+            margin: 5px 10px;
             color: #00ffe5;
             text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            transition: 0.3s ease;
         }
 
-        .social-links a:hover {
-            color: #fff;
+        .CV ul {
+            padding-left: 20px;
+        }
+
+        .CV li {
+            margin-bottom: 5px;
+        }
+
+        .CV p {
+            color: #e0e0e0;
+            font-size: 16px;
         }
     </style>
 </head>
 
 <body>
-    <div class="top-buttons">
-        <button onclick="location.href='/'" class="button">Home</button>
-        <button onclick="location.href='/climatenet'" class="button">Climate</button>
-        <button onclick="location.href='/work'"> Three months of work</button>
-        <button onclick="location.href='/me'">About Me</button>
-    </div>
-    <div class="about-container">
+    <header>
+        <h1 onclick="location.href='/'" style="cursor: pointer;">Climatenet</h1>
+        <nav>
+            <button onclick="location.href='/'" class="button">Home</button>
+            <button onclick="location.href='/climatenet'" class="button">Climate</button>
+            <button onclick="location.href='/work'" class="button">Three months of work</button>
+            <button onclick="location.href='/me'" class="button">About Me</button>
+            <button onclick="location.href='/?path=useradd'" class="button">Sing In</button>
+        </nav>
+    </header>
+    <div class="CV">
         <h1>About Me</h1>
-        <p>
-            Hi! I'm a tech enthusiast who loves working with Raspberry Pi, web development, and smart projects.
-            I enjoy building cool things with code and learning new technologies every day.
-            Whether it's backend or frontend, Linux or Python — I’m always curious to dive deeper.
-        </p>
+        <h2>Suren Petrosyan</h2>
+
         <div class="social-links">
-            {% if github is not none %}
-                {% if github is string %}
-                  <a href="{{ github }}" target="_blank">GitHub</a>
+            <h3>Contacts</h3>
+            <div>
+                {% if profile.phone is not none %}
+                {% if profile.phone is string %}
+                <a href="tel:{{ profile.phone }}">phone: {{ profile.phone }}</a>
                 {% endif %}
-            {% endif %}
-            {% if linkedin is not none %}
-                {% if linkedin is string %}
-                <a href="{{ linkedin }}" target="_blank">LinkedIn</a>
                 {% endif %}
-            {% endif %}
+                {% if profile.gmail is not none %}
+                {% if profile.gmail is string %}
+                <a href="mailto:{{ profile.gmail }}">Gmail: {{ profile.gmail }}</a>
+                {% endif %}
+                {% endif %}
+                {% if profile.github is not none %}
+                {% if profile.github is string %}
+                <a href="{{ profile.github }}" target="_blank">GitHub</a>
+                {% endif %}
+                {% endif %}
+                {% if profile.linkedin is not none %}
+                {% if profile.linkedin is string %}
+                <a href="{{ profile.linkedin }}" target="_blank">LinkedIn</a>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="Education">
+            <h3>Education</h3>
+            <p><strong>2024 - Present</strong> | 42 Yerevan<br>
+                Bachelor's Degree, Computer Science</p>
+        </div>
+
+        <div class="SoftSkills">
+            <h3>Soft Skills</h3>
+            <ul>
+                {% if skills %}
+                {% for i in skills %}
+                <li>{{ i }}</li>
+                {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+
+        <div class="TechSkills">
+            <h3>Tech Skills</h3>
+            <ul>
+                {% if techskills %}
+                {% for i in techskills %}
+                <li>{{ i | join(', ') }}</li>
+                {% endfor %}
+                {% endif %}
+            </ul>
         </div>
     </div>
+
 </body>
 
 </html>

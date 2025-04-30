@@ -5,40 +5,59 @@
     <meta charset="UTF-8">
     <title>Raspberry Pi</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #2b2b2b;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
+            background: #121212;
             color: white;
             animation: bodyFade 1s ease-in-out;
         }
 
-        .top-buttons {
-            position: fixed;
+        header {
+            background: #1f1f1f;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
             top: 0;
-            width: 100%;
-            background-color: rgba(45, 45, 45, 0.9);
-            padding: 30px;
-            text-align: center;
             z-index: 1000;
         }
-
-        .top-buttons button {
-            margin: 0 15px;
-            padding: 10px 20px;
-            background-color: #fff;
-            color: #242424;
-            border: none;
-            border-radius: 25px;
-            font-size: 20px;
-            cursor: pointer;
-            transition: 0.3s;
+        
+        h1 {
+            font-size: 3em;
+            animation: fadeIn 2s ease-in-out;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        header h1 {
+            color: #00c9ff;
         }
 
-        .top-buttons button:hover {
-            background-color: #000;
-            color: white;
+        nav .button {
+            margin-left: 20px;
+            font-size: 15px;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 15px 30px;
+            border-radius: 25px;
+            background: transparent;
+            border: 2px solid #ccc;
+            color: #ccc;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav .button:hover {
+            background: #00c9ff;
+            color: #000;
+            border-color: #00c9ff;
         }
 
         .BashVim {
@@ -47,7 +66,7 @@
             align-items: center;
             padding-top: 120px;
         }
-        
+
         .container {
             background-color: rgba(80, 80, 80, 0.9);
             border-radius: 15px;
@@ -92,31 +111,77 @@
             line-height: 1.5;
         }
 
+        a {
+            color: #00bcd4;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: #ff4081;
+        }
     </style>
 </head>
 
 <body>
-    <div class="top-buttons">
-        <button onclick="location.href='/'" class="button">Home</button>
-        <button onclick="location.href='/climatenet'" class="button">Climate</button>
-        <button onclick="location.href='/work'"> Three months of work</button>
-        <button onclick="location.href='/me'">About Me</button>
-    </div>
+    <header>
+        <h1 onclick="location.href='/'" style="cursor: pointer;">Climatenet</h1>
+        <nav>
+            <button onclick="location.href='/'" class="button">Home</button>
+            <button onclick="location.href='/climatenet'" class="button">Climate</button>
+            <button onclick="location.href='/work'" class="button">Three months of work</button>
+            <button onclick="location.href='/me'" class="button">About Me</button>
+            <button onclick="location.href='/?path=useradd'" class="button">Sing In</button>
+        </nav>
+    </header>
     <div class="BashVim">
         <div class="container">
             <h2>Bash</h2>
             <p>
-                Bash (կարճ՝ Bourne Again SHell) — դա shell է, այսինքն՝ հրամանային ինտերպրետատոր, որը թարգմանում է քո մուտքագրած հրամանները և փոխանցում օպերացիոն համակարգին։ Այն նաև ծրագրավորման լեզու է՝ աջակցելով փոփոխականներ, պայմաններ, ցիկլեր, ֆունկցիաներ և այլն։
-                🔹 Ստեղծվել է 1989-ին Բրայան Ֆոքսի կողմից GNU նախագծի շրջանակում՝ փոխարինելու ստանդարտ Bourne Shell-ին (sh)։
+                Bash-ը (Bourne Again SHell) հրամանային միջավայր է (shell), որը տարածված է Unix-ի նման
+                համակարգերում, այդ թվում՝ Linux-ում:
+                Այն ոչ միայն թույլ է տալիս գործարկել հրամաններ տերմինալում, այլ նաև կարող է օգտագործվել որպես
+                սկրիպտավորման լեզու՝ ավտոմատացնելու համար տարբեր գործընթացներ:
+                Bash-ը հանդիսանում է շատ Linux համակարգերի լռելյայն shell-ը և ունի հզոր հնարավորություններ՝ պայմանական
+                հրամաններից մինչև ցիկլեր և ֆունկցիաներ։
             </p>
+
+            <h3>Հիմնական հնարավորությունները Bash-ում</h3>
+            <ul>
+                <li>Հրամանների պատմություն և ավտոմատ լրացում (autocomplete)</li>
+                <li>Փոփոխականների և միջավայրի կառավարում</li>
+                <li>Սկրիպտների գրանցում՝ ավտոմատացման համար</li>
+            </ul>
+
+            <h3>Օրինակներ</h3>
+            <ul>
+                <li><code>ls</code> – ցուցադրում է ֆայլերն ու պանակները</li>
+                <li><code>cd</code> – փոխում է ընթացիկ պանակը</li>
+                <li><code>mkdir my_folder</code> – ստեղծում է նոր պանակ</li>
+                <li><code>rm file.txt</code> – ջնջում է ֆայլը</li>
+                <li><code>echo "Hello"</code> – արտածում է տեքստ</li>
+                <li><code>nano file.txt</code> – բացում է ֆայլը խմբագրման համար (կամ <code>vim</code>)</li>
+                <li><code>./script.sh</code> – գործարկում է սկրիպտ</li>
+                <li><code>chmod +x script.sh</code> – դարձնում է սկրիպտը գործարկելի</li>
+                <li><code>ps aux | grep python</code> – որոնում է python պրոցեսները</li>
+            </ul>
+            {% if bash is not none %}
+            {% if bash is string %}
+            <a href="{{ bash }}" target="_blank">100 bash teams</a>
+            {% endif %}
+            {% endif %}
         </div>
         <div class="container">
             <h2>Vim</h2>
             <p>
-                Vim-ը (կրճատ՝ Vi IMproved) տեքստային խմբագիր է, որը ստեղծվել է որպես բարելավված տարբերակ Unix համակարգերում տարածված vi խմբագրից։
-                Vim-ը հատկապես հայտնի է իր արագությամբ, մինիմալիստական մոտեցմամբ և բացառիկ արդյունավետությամբ՝ հատկապես նրանց համար, ովքեր նախընտրում են աշխատել տերմինալում։
-                Ի տարբերություն սովորական խմբագիրների՝ Vim-ը աշխատում է մոդերի վրա հիմնված համակարգով, որտեղ օգտատերը տարբեր ռեժիմներով կարող է անցնել խմբագրման, նավարկման և հրամանների կատարման միջավայրերի միջև։
-                Սա սկզբում կարող է անսովոր թվալ, սակայն սովորելուց հետո այն տալիս է անգերազանցելի արագություն և հսկողություն տեքստի վրա։
+                Vim-ը (կրճատ՝ Vi IMproved) տեքստային խմբագիր է, որը ստեղծվել է որպես բարելավված տարբերակ Unix
+                համակարգերում տարածված vi խմբագրից։
+                Vim-ը հատկապես հայտնի է իր արագությամբ, մինիմալիստական մոտեցմամբ և բացառիկ արդյունավետությամբ՝ հատկապես
+                նրանց համար, ովքեր նախընտրում են աշխատել տերմինալում։
+                Ի տարբերություն սովորական խմբագիրների՝ Vim-ը աշխատում է մոդերի վրա հիմնված համակարգով, որտեղ օգտատերը
+                տարբեր ռեժիմներով կարող է անցնել խմբագրման, նավարկման և հրամանների կատարման միջավայրերի միջև։
+                Սա սկզբում կարող է անսովոր թվալ, սակայն սովորելուց հետո այն տալիս է անգերազանցելի արագություն և
+                հսկողություն տեքստի վրա։
             </p>
             <h3>Հիմնական մոդերը Vim-ում</h3>
             <ul>
@@ -138,6 +203,11 @@
                 <li>/բառ – որոնել բառը</li>
                 ...
             </ul>
+            {% if vim is not none %}
+            {% if vim is string %}
+            <a href="{{ vim }}" target="_blank">100 Vim teams</a>
+            {% endif %}
+            {% endif %}
         </div>
     </div>
 </body>

@@ -1,46 +1,64 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
             background-image: url("https://images-in-website.s3.us-east-1.amazonaws.com/Banner/tumo_koghb.webp");
             background-size: cover;
             background-position: center;
             color: white;
-            height: 100vh;
-            animation: bodyFade 1s ease-in-out; 
+            animation: bodyFade 1s ease-in-out;
         }
 
-        .top-buttons {
-            position: fixed;
+        header {
+            background: #1f1f1f;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
             top: 0;
-            width: 100%;
-            background-color: rgba(146, 130, 130, 0.9);
-            padding: 30px;
-            text-align: center;
             z-index: 1000;
         }
-
-        .top-buttons button {
-            margin: 0 15px;
-            padding: 10px 20px;
-            background-color: #fff;
-            color: #242424;
-            border: none;
-            border-radius: 25px;
-            font-size: 20px;
-            cursor: pointer;
-            transition: 0.3s;
+        
+        h1 {
+            font-size: 3em;
+            animation: fadeIn 2s ease-in-out;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        header h1 {
+            color: #00c9ff;
         }
 
-        .top-buttons button:hover {
-            background-color: #000;
-            color: white;
+        nav .button {
+            margin-left: 20px;
+            font-size: 15px;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 15px 30px;
+            border-radius: 25px;
+            background: transparent;
+            border: 2px solid #ccc;
+            color: #ccc;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav .button:hover {
+            background: #00c9ff;
+            color: #000;
+            border-color: #00c9ff;
         }
 
         .maindiv {
@@ -52,38 +70,40 @@
             border-radius: 10px;
             box-sizing: border-box;
         }
-    
+
         #head {
             text-align: center;
             font-size: 28px;
             color: #333;
             margin-bottom: 30px;
         }
-    
+
         form {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
-    
+
         label {
             font-size: 16px;
             color: #555;
         }
-    
-        select, input[type="text"] {
+
+        select,
+        input[type="text"] {
             padding: 12px;
             font-size: 16px;
             border: 2px solid #ddd;
             border-radius: 8px;
             transition: border 0.3s ease;
         }
-    
-        select:focus, input[type="text"]:focus {
+
+        select:focus,
+        input[type="text"]:focus {
             border-color: #3498db;
             outline: none;
         }
-    
+
         input[type="submit"] {
             background-color: #3498db;
             color: white;
@@ -94,11 +114,11 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-    
+
         input[type="submit"]:hover {
             background-color: #2980b9;
         }
-    
+
         .datadiv {
             margin-top: 30px;
             padding: 20px;
@@ -107,22 +127,28 @@
             border-radius: 10px;
             box-sizing: border-box;
         }
+
         .datadiv p {
             font-size: 18px;
             color: #333;
             margin-bottom: 12px;
         }
     </style>
-    
+
     <title>Weather Data</title>
 </head>
+
 <body>
-    <div class="top-buttons">
-        <button onclick="location.href='/'" class="button">Home</button>
-        <button onclick="location.href='/climatenet'" class="button">Climate</button>
-        <button onclick="location.href='/work'"> Three months of work</button>
-        <button onclick="location.href='/me'">About Me</button>
-    </div>
+    <header>
+        <h1 onclick="location.href='/'" style="cursor: pointer;">Climatenet</h1>
+        <nav>
+            <button onclick="location.href='/'" class="button">Home</button>
+            <button onclick="location.href='/climatenet'" class="button">Climate</button>
+            <button onclick="location.href='/work'" class="button">Three months of work</button>
+            <button onclick="location.href='/me'" class="button">About Me</button>
+            <button onclick="location.href='/?path=useradd'" class="button">Sing In</button>
+        </nav>
+    </header>
 
     <div class="maindiv">
         <h1 id="head">Enter a timestamp to receive the data.</h1>
@@ -178,16 +204,17 @@
     </div>
     <div class="datadiv">
         {% if data is not none %}
-            {% if data is not string %}
-                {% for i in range(data|length) %}
-                    <p>{{ info[i] }} - {{ data[i] }}</p>
-                {% endfor %}
-            {% elif data is string %}
-                <p>{{ data }}</p>
-            {% endif %}
+        {% if data is not string %}
+        {% for i in range(data|length) %}
+        <p>{{ info[i] }} - {{ data[i] }}</p>
+        {% endfor %}
+        {% elif data is string %}
+        <p>{{ data }}</p>
+        {% endif %}
         {% else %}
-            <p>No data available</p>
+        <p>No data available</p>
         {% endif %}
     </div>
 </body>
+
 </html>
