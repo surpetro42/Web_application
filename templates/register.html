@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>User Add</title>
+    <title>Регистрация - Climatenet</title>
     <style>
         * {
             box-sizing: border-box;
@@ -12,11 +12,12 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             background: linear-gradient(100deg, #2e2144 0%, #575161 100%);
             color: white;
-            animation: bodyFade 1s ease-in-out;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         header {
@@ -34,10 +35,8 @@
             font-size: 3em;
             animation: fadeIn 2s ease-in-out;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        header h1 {
             color: #00c9ff;
+            cursor: pointer;
         }
 
         nav .button {
@@ -59,35 +58,109 @@
             color: #000;
             border-color: #00c9ff;
         }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .register-container {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 201, 255, 0.3);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .register-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #00c9ff;
+        }
+
+        .register-container input[type="text"],
+        .register-container input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .register-container input[type="submit"] {
+            width: 100%;
+            background: #00c9ff;
+            color: #000;
+            font-weight: bold;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .register-container input[type="submit"]:hover {
+            background: #00a0cc;
+        }
+
+        .error {
+            color: #ff6b6b;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .login-link a {
+            color: #00c9ff;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <h1 onclick="location.href='/'" style="cursor: pointer;">Climatenet</h1>
+        <h1 onclick="location.href='/'">Climatenet</h1>
         <nav>
             <button onclick="location.href='/'" class="button">Home</button>
             <button onclick="location.href='/climatenet'" class="button">Climate</button>
             <button onclick="location.href='/work'" class="button">Three months of work</button>
             <button onclick="location.href='/me'" class="button">About Me</button>
-            <button onclick="location.href='/?path=useradd'" class="button">Sing In</button>
         </nav>
     </header>
 
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
-    <form method="post">
-        <label for="username">Имя пользователя:</label><br>
-        <input type="text" id="username" name="username" required><br><br>
+    <main>
+        <div class="register-container">
+            <h2>Գրանցվել</h2>
 
-        <label for="password">Пароль:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
+            {% if error %}
+                <div class="error">{{ error }}</div>
+            {% endif %}
 
-        <button type="submit">Зарегистрироваться</button>
-    </form>
-    <p>Уже есть аккаунт? <a href="{{ url_for('login') }}">Войти</a></p>
-    
+            <form method="post">
+                <input type="text" name="username" placeholder="Օգտատերի անունը" required>
+                <input type="password" name="password" placeholder="Գաղտնաբառ" required>
+                <input type="submit" value="Գրանցվել">
+            </form>
+
+            <div class="login-link">
+                Այստեղ արդեն օգտատեր եք? <a href="{{ url_for('login') }}">Մուտք գործել</a>
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>

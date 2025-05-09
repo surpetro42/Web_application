@@ -10,9 +10,8 @@
             margin: 0;
             padding: 0;
         }
-        
+
         body {
-            font-family: Arial, sans-serif;
             font-family: 'Segoe UI', sans-serif;
             background: #121212;
             color: white;
@@ -29,15 +28,18 @@
             top: 0;
             z-index: 1000;
         }
-        
+
         h1 {
             font-size: 3em;
             animation: fadeIn 2s ease-in-out;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-        
-        header h1 {
             color: #00c9ff;
+            cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
         }
 
         nav .button {
@@ -58,6 +60,26 @@
             background: #00c9ff;
             color: #000;
             border-color: #00c9ff;
+        }
+
+        nav .nav_box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav .nav_box .link {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-weight: lighter;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background-color: #ccc;
+            margin: 0 10px;
         }
 
         p {
@@ -81,15 +103,17 @@
 
 <body>
     <header>
-        <h1 onclick="location.href='/'" style="cursor: pointer;">Climatenet</h1>
+        <h1 onclick="location.href='/'">Climatenet</h1>
         <nav>
             <button onclick="location.href='/'" class="button">Home</button>
             <button onclick="location.href='/climatenet'" class="button">Climate</button>
             <button onclick="location.href='/work'" class="button">Three months of work</button>
             <button onclick="location.href='/me'" class="button">About Me</button>
-            <!-- <button onclick="location.href='/?path=useradd'" class="button">Sing In</button> -->
-            <button onclick="location.href='/register'" class="button">Sing In</button>
-            <button onclick="location.href='/register'" class="button">Log In</button>
+            <div class="nav_box">
+                <a onclick="location.href='/SignIn'" class="link">Sign In</a>
+                <span class="divider"></span>
+                <a onclick="location.href='/LogIn'" class="link">Log In</a>
+            </div>
         </nav>
     </header>
 </body>
