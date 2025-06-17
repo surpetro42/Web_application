@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: white;
+    animation: bodyFade 1s ease-in-out;
+}
+
+header {
+    background: #1f1f1f;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+h1 {
+    font-size: 3em;
+    animation: fadeIn 2s ease-in-out;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+header h1 {
+    color: #00c9ff;
+}
+
+nav .button {
+    margin-left: 20px;
+    font-size: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 25px;
+    background: transparent;
+    border: 2px solid #ccc;
+    color: #ccc;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+nav .button:hover {
+    background: #00c9ff;
+    color: #000;
+    border-color: #00c9ff;
+}
+
+.CV {
+    max-width: 800px;
+    margin: 100px auto 40px;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+.CV h1 {
+    font-size: 45px;
+    color: #00ffe5;
+    margin-bottom: 5px;
+}
+
+.CV h2 {
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #00ffe5;
+    margin-top: 30px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 5px 10px;
+    color: #00ffe5;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.CV ul {
+    padding-left: 20px;
+}
+
+.CV li {
+    margin-bottom: 5px;
+}
+
+.CV p {
+    color: #e0e0e0;
+    font-size: 16px;
+}

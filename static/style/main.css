@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #121212;
+    color: white;
+    animation: bodyFade 1s ease-in-out;
+}
+
+header {
+    background: #1f1f1f;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+h1 {
+    font-size: 3em;
+    animation: fadeIn 2s ease-in-out;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    color: #00c9ff;
+    cursor: pointer;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav .button {
+    margin-left: 20px;
+    font-size: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 25px;
+    background: transparent;
+    border: 2px solid #ccc;
+    color: #ccc;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+nav .button:hover {
+    background: #00c9ff;
+    color: #000;
+    border-color: #00c9ff;
+}
+
+nav .nav_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+nav .nav_box .link {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: lighter;
+}
+
+.divider {
+    width: 60px;
+    height: 1px;
+    background-color: #ccc;
+    margin: 0 10px;
+}
+
+p {
+    font-size: 1.5em;
+    animation: fadeIn 3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
